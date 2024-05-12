@@ -79,6 +79,6 @@ void solve(int nx, int ny, int iterationmax) {
 int main(int argc, char* argv[])
 {
     MPI_Init(&argc, &argv);
-    solve(50, 50, 100);
+    solve(10, 10, 100);
     MPI_Finalize();
 }
