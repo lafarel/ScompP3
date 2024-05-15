@@ -94,9 +94,6 @@ int main(int argc, char* argv[]) {
     double duration;
     bool stop = false;
     MPI_Init(&argc, &argv);
-
-    int numprocs;
-    MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
     
     int myid = 0;
     MPI_Comm_rank(MPI_COMM_WORLD, &myid);
@@ -114,7 +111,7 @@ int main(int argc, char* argv[]) {
         if (myid == 0) {
             std::cout << N << "," <<duration << "\n";
         }
-        if (duration > max_duration / (double) 4) {
+        if (duration > max_duration / 4.0) {
             stop = true;
         }
         MPI_Barrier(MPI_COMM_WORLD);
