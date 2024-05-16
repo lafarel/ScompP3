@@ -40,7 +40,7 @@ void solve(int nx, int ny, int iterationmax) {
     initialize(b);
     DistributedMatrix f(nx, ny);
     f.Initialized();
-    std::cout << a;
+    //std::cout << a;
 
     // Actually do the computation. Note the use of a collective operation to
     // check for convergence, and a do-loop to bound the number of iterations
@@ -52,15 +52,15 @@ void solve(int nx, int ny, int iterationmax) {
     for (it = 0 ; it < iterationmax ; it++) {
         b.Synchronize();
         jacobi_iteration(b, f, a);
-        std::cout << a;
+        //std::cout << a;
         a.Synchronize();
-        std::cout << a;
+        //std::cout << a;
         jacobi_iteration(a, f, b);
-        std::cout << b;
+        //std::cout << b;
         double diffnorm = sum_squares(a, b);
         if (myid == displayed_processor)
             printf(ANSI_COLOR_BLUE "diffnorm in iteration %d: %.8f\n" ANSI_COLOR_RESET, it, diffnorm);
-        if (diffnorm < 1.0e-8) break;
+        //if (diffnorm < 1.0e-8) break;
     }
     double t2 = MPI_Wtime();
     if (myid == displayed_processor) {
@@ -79,6 +79,6 @@ void solve(int nx, int ny, int iterationmax) {
 int main(int argc, char* argv[])
 {
     MPI_Init(&argc, &argv);
-    solve(10, 10, 100);
+    solve(64, 64, 250);
     MPI_Finalize();
 }

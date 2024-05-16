@@ -9,7 +9,7 @@ runtests: test.out
 	mpiexec -n 2 ./test.out
 
 run: poisson.out
-	mpiexec -n 4 ./poisson.out
+	mpiexec -n 1 ./poisson.out
 
 %.o: %.cpp
 	mpicxx -std=c++11 -g -o $@ -c $<
