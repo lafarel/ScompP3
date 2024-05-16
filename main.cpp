@@ -118,4 +118,5 @@ int main(int argc, char* argv[]) {
         if (stop) break;
     }
     MPI_Finalize();
+    return 0;
 }
