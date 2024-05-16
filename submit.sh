@@ -7,5 +7,4 @@
 #SBATCH --time=30:00
 #SBATCH --mem-per-cpu=100
 
-make clean
-time make
+time mpiexec -n 1 ./poisson.out
