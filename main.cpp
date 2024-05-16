@@ -48,7 +48,6 @@ double solve(int nx, int ny, int iterationmax) {
     double t1 = MPI_Wtime();
 
     int it = 0;
-    double diffnorm = 0.0;
     for (it = 0 ; it < iterationmax ; it++) {
         b.Synchronize();
         jacobi_iteration(b, f, a);
@@ -57,7 +56,7 @@ double solve(int nx, int ny, int iterationmax) {
         //std::cout << a;
         jacobi_iteration(a, f, b);
         //std::cout << b;
-        double diffnorm = sum_squares(a, b);
+        sum_squares(a, b);
         /*
         if (myid == displayed_processor)
             printf(ANSI_COLOR_BLUE "diffnorm in iteration %d: %.8f\n" ANSI_COLOR_RESET, it, diffnorm);
@@ -83,6 +82,7 @@ double solve(int nx, int ny, int iterationmax) {
         */
     }
     //std::cout << a;
+    return 0;
 }
 
 int main(int argc, char* argv[]) {
@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
     size_t N_min = 32;
     size_t N_max = 10000;
     size_t n_iter = 250;
-    double max_duration = 60.0; // maximum time 
+    double max_duration = 5.0; // maximum time 
     double duration;
     bool stop = false;
     MPI_Init(&argc, &argv);
