@@ -88,9 +88,9 @@ double solve(int nx, int ny, int iterationmax) {
 int main(int argc, char* argv[]) {
 
     size_t N_min = 32;
-    size_t N_max = 10000;
+    size_t N_max = 20000;
     size_t n_iter = 250;
-    double max_duration = 5.0; // maximum time 
+    double max_duration = 60.0; // maximum time 
     double duration;
     bool stop = false;
     MPI_Init(&argc, &argv);
