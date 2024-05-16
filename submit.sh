@@ -7,7 +7,5 @@
 #SBATCH --time=30:00
 #SBATCH --mem-per-cpu=100
 
-module load OpenMPI
-ml OpenMPI
 make clean
 time make
